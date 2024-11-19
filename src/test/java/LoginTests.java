@@ -7,7 +7,6 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
 
-
     @Test
     public void testValidLogin() {
         new LoginPage(driver)
@@ -16,8 +15,6 @@ public class LoginTests extends BaseTest {
         boolean dashboardMenuDisplayed = dashboardMenu.isDisplayed();
         Assert.assertTrue(dashboardMenuDisplayed);
     }
-
-
     @Test
     public void testInValidPw() {
         new LoginPage(driver)

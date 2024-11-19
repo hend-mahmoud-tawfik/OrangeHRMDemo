@@ -12,9 +12,7 @@ public class LoginPage {
     private WebDriver driver;
     private static WebDriverWait wait;
 
-
     public LoginPage(WebDriver driver) {
-
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }

@@ -15,7 +15,7 @@ public class AddUserTest extends BaseTest{
         new ViewSystemUserPage(driver)
                 .clickOnAddBtn();
         new SaveSystemUserPage(driver)
-                .fillData("hibrahim@", "hmahmou1234@")
+                .fillData("D" , "hibrahim@", "hmahmou1234@" )
                 .clickOnSaveBtn();
     }
 }
