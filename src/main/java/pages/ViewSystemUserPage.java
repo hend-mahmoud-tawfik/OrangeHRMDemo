@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ViewSystemUserPage {
 
-    private WebDriver driver;
+    private static WebDriver driver;
     private static WebDriverWait wait;
 
     public ViewSystemUserPage(WebDriver driver) {
@@ -30,6 +30,13 @@ public class ViewSystemUserPage {
 
     private By adminUserRole = By.xpath("//div[text()='User Role']");
 
+    private By table = By.xpath("//div[@class='oxd-table-body']");
+
+    private static By tableCells = By.xpath("//div[@class='oxd-table-cell oxd-padding-cell']");
+
+    private static By editButton = By.xpath("//button[@class='oxd-icon-button oxd-table-cell-action-space'][2]");
+
+
     public static WebElement getSystemUserLabel(WebDriver driver){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(systemUserLabel));
     }
@@ -46,6 +53,28 @@ public class ViewSystemUserPage {
         driver.findElement(searchBtn).click();
     }
 
+    public static boolean confirmAddedUserIsDisplayed(String generatedUserName){
+        WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(editButton));
+        List<WebElement> cells = driver.findElements(tableCells);
+        for (int i = 0; i < cells.size(); i++) {
+            String cellText = cells.get(i).getText();
+            if (cellText.equals(generatedUserName)) {
+            return true;
+            }
+        }
+        return false;
+    }
 
-}
+    public SaveSystemUserPage clickOnEditBtn(){
+        wait.until(ExpectedConditions.elementToBeClickable(editButton));
+        driver.findElement(editButton).click();
+        return new SaveSystemUserPage(driver);
+
+    }
+
+    }
+
+
+
+
 
