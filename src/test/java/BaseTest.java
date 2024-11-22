@@ -1,5 +1,6 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
@@ -12,6 +13,11 @@ public class BaseTest {
         driver = new EdgeDriver();
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
         driver.manage().window().maximize();
+    }
+
+    @AfterTest
+    public void tearDown(){
+        driver.quit();
     }
 }
 

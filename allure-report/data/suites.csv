@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","1","confirmUserNameIsChanged","Default Suite","Fri Nov 22 21:25:37 EET 2024","skipped","Fri Nov 22 21:25:37 EET 2024","AddUserTest","OrangeHRMDemo","AddUserTest","confirmUserNameIsChanged"
+"the successful adding for a new user","46146","verify the successful adding user and confirm that the user is added successfully and displayed in the users list","Default Suite","Fri Nov 22 22:19:29 EET 2024","passed","Fri Nov 22 22:20:16 EET 2024","AddUserTest","OrangeHRMDemo","AddUserTest","testAddUser"
+"","8","init","Default Suite","Fri Nov 22 21:34:01 EET 2024","broken","Fri Nov 22 21:34:01 EET 2024","AddUserTest","OrangeHRMDemo","AddUserTest","init"

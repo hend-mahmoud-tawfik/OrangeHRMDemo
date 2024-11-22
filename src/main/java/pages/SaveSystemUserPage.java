@@ -42,7 +42,7 @@ public class SaveSystemUserPage {
 
     private By essOption = By.xpath("//span[text()='ESS']");
 
-    private By nameSelected = By.xpath("//span[text()='Robert James Chen Schneider']");
+    private By nameSelected = By.xpath("//span[text()='James  Butler']");
 
     public static WebElement getAddUserTitle(WebDriver driver){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(addUserTitle));

@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,7 +13,8 @@ public class AddUserTest extends BaseTest{
 
     String generatedUserName = newUserName + System.currentTimeMillis();
 
-    @Test
+    @Test (description = "verify the successful adding user and confirm that the user is added successfully and displayed in the users list")
+    @Description ("the successful adding for a new user")
     public void testAddUser(){
         new LoginPage(driver)
                 .login("Admin", "admin123");
@@ -26,7 +28,8 @@ public class AddUserTest extends BaseTest{
         Assert.assertTrue(ViewSystemUserPage.confirmAddedUserIsDisplayed(generatedUserName));
     }
 
-    @Test
+    @Test (description = "verify the successful editing for user and confirm that the user is edited successfully")
+    @Description ("the successful editing for a user")
     public void editUser() {
         new LoginPage(driver)
                 .login("Admin", "admin123");
