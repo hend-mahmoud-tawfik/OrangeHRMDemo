@@ -3,6 +3,8 @@
     <test name="OrangeDemo">
         <classes>
             <class name="LoginTests"/>
+            <class name="AddUserTest"/>
+            <class name="NavigationTests"/>
         </classes>
     </test>
 </suite>

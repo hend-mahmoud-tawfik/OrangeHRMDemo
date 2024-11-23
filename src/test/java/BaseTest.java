@@ -8,6 +8,10 @@ public class BaseTest {
 
     WebDriver driver;
 
+    String Browser;
+
+    String Base_URL;
+
     @BeforeTest
     public void init() {
         driver = new EdgeDriver();
