@@ -22,7 +22,7 @@ public class ViewSystemUserPage {
 
     private By addBtn = By.xpath("//i[@class='oxd-icon bi-plus oxd-button-icon']");
 
-    private static By systemUserLabel =  By.xpath("//h5[@class='oxd-text oxd-text--h5 oxd-table-filter-title']");
+    private static By systemUserLabel = By.xpath("//h5[@class='oxd-text oxd-text--h5 oxd-table-filter-title']");
 
     private By userRoleField = By.xpath("//label[contains(., 'User Role')]//following::div[2]//div[@class='oxd-select-text-input']");
 
@@ -34,45 +34,61 @@ public class ViewSystemUserPage {
 
     private static By tableCells = By.xpath("//div[@class='oxd-table-cell oxd-padding-cell']");
 
-    private static By editButton = By.xpath("//button[@class='oxd-icon-button oxd-table-cell-action-space'][2]");
+    private static By editButton = By.xpath("(//button[@class='oxd-icon-button oxd-table-cell-action-space'])[4]");
 
+    private static By secondUserName = By.xpath("(//div[@class='oxd-table-cell oxd-padding-cell'])[8]");
 
-    public static WebElement getSystemUserLabel(WebDriver driver){
+    private static By userNameCells = By.xpath("//div[@class='oxd-table-cell oxd-padding-cell'][2]");
+
+    public static WebElement getSystemUserLabel(WebDriver driver) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(systemUserLabel));
     }
 
-    public SaveSystemUserPage clickOnAddBtn(){
+    public SaveSystemUserPage clickOnAddBtn() {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(addBtn));
         driver.findElement(addBtn).click();
         return new SaveSystemUserPage(driver);
     }
-    public void searchAboutUserRole(){
-        WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(searchBtn)) ;
+
+    public void searchAboutUserRole() {
+        WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(searchBtn));
         driver.findElement(userRoleField).click();
-        driver.findElement(userRoleField).sendKeys(Keys.ARROW_DOWN,Keys.ENTER);
+        driver.findElement(userRoleField).sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         driver.findElement(searchBtn).click();
     }
 
-    public static boolean confirmAddedUserIsDisplayed(String generatedUserName){
+    public static boolean confirmAddedUserIsDisplayed(String generatedUserName) {
         WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(editButton));
         List<WebElement> cells = driver.findElements(tableCells);
         for (int i = 0; i < cells.size(); i++) {
             String cellText = cells.get(i).getText();
             if (cellText.equals(generatedUserName)) {
-            return true;
+                return true;
             }
         }
         return false;
     }
 
-    public SaveSystemUserPage clickOnEditBtn(){
+    public SaveSystemUserPage clickOnEditBtn() {
         wait.until(ExpectedConditions.elementToBeClickable(editButton));
         driver.findElement(editButton).click();
         return new SaveSystemUserPage(driver);
 
     }
 
+
+    public static boolean confirmEditedUserIsDisplayed(String generatedUserName) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(userNameCells));
+        List<WebElement> users = driver.findElements(userNameCells);
+        for (int j = 0; j > users.size(); j++) {
+            String user = users.get(j).getText();
+            if (user.equals(user + generatedUserName)) {
+                return true;
+            }
+        }
+        return false;
     }
+}
 
 
 

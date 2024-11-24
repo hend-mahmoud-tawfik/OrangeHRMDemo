@@ -28,21 +28,8 @@ public class AddUserTest extends BaseTest{
         Assert.assertTrue(ViewSystemUserPage.confirmAddedUserIsDisplayed(generatedUserName));
     }
 
-    @Test (description = "verify the successful editing for user and confirm that the user is edited successfully")
-    @Description ("the successful editing for a user")
-    public void editUser() {
-        new LoginPage(driver)
-                .login("Admin", "admin123");
-        new DashboardPage(driver)
-                .clickOnAdminLink();
-        new ViewSystemUserPage(driver)
-                .clickOnEditBtn();
-        WebElement editUserLabel = SaveSystemUserPage.getEditUserLabel(driver);
-        boolean IsEditUserLabelDisplayed = editUserLabel.isDisplayed();
-        Assert.assertTrue(IsEditUserLabelDisplayed);
-    }
-
-    @Test
+    @Test (description = "verify the successful editing for existing username and confirm that the username is edited successfully")
+    @Description ("the successful editing for existing user")
     public void confirmUserNameIsChanged(){
         new LoginPage(driver)
                 .login("Admin", "admin123");
@@ -52,7 +39,7 @@ public class AddUserTest extends BaseTest{
                 .clickOnEditBtn();
         new SaveSystemUserPage(driver)
                 .editUserName(generatedUserName);
-        Assert.assertTrue(ViewSystemUserPage.confirmAddedUserIsDisplayed(generatedUserName));
+        Assert.assertTrue(ViewSystemUserPage.confirmEditedUserIsDisplayed(generatedUserName));
     }
 
 }

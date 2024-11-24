@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,7 +9,8 @@ import pages.ViewSystemUserPage;
 
 public class NavigationTests extends BaseTest {
 
-    @Test
+    @Test (description = "verify the successful navigation to ViewSystemUSerPage")
+    @Description("the successful navigation")
     public void testNavigateToViewSystemUserPage() {
         new LoginPage(driver)
                 .login("Admin", "admin123");
@@ -19,7 +21,8 @@ public class NavigationTests extends BaseTest {
         Assert.assertTrue(systemUserLabelIsDisplayed);
     }
 
-    @Test
+    @Test (description = "verify the successful navigation to SaveSystemUSerPage")
+    @Description("the successful navigation")
     public void testNavigationToSaveSystemPage() {
         new LoginPage(driver)
                 .login("Admin", "admin123");

@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,7 +8,8 @@ import pages.LoginPage;
 
 public class LoginTests extends BaseTest {
 
-    @Test
+    @Test (description = "verify the successful login with valid user and password")
+    @Description ("the successful login testCase")
     public void testValidLogin() {
         new LoginPage(driver)
                 .login("Admin", "admin123");
@@ -15,7 +17,8 @@ public class LoginTests extends BaseTest {
         boolean dashboardMenuDisplayed = dashboardMenu.isDisplayed();
         Assert.assertTrue(dashboardMenuDisplayed);
     }
-    @Test
+    @Test (description = "verify the unsuccessful login with invalid password")
+    @Description ("the unsuccessful login")
     public void testInValidPw() {
         new LoginPage(driver)
                 .login("Admin", "wrongpw");
@@ -25,7 +28,8 @@ public class LoginTests extends BaseTest {
     }
 
 
-    @Test
+    @Test (description = "verify the unsuccessful login with invalid username")
+    @Description ("the unsuccessful login")
     public void testInValidUserName() {
         new LoginPage(driver)
                 .login("wronguser", "admin123");
