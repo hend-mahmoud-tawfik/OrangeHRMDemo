@@ -82,11 +82,8 @@ public class ViewSystemUserPage {
         List<WebElement> users = driver.findElements(userNameCells);
         for (int j = 0; j > users.size(); j++) {
             String user = users.get(j).getText();
-            System.out.println(user);
             if (user.equals(user + generatedUserName));
-            System.out.println(user + generatedUserName);
           {
-
                 return true;
             }
         }
