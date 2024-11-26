@@ -8,10 +8,6 @@ public class BaseTest {
 
     WebDriver driver;
 
-    String Browser;
-
-    String Base_URL;
-
     @BeforeTest
     public void init() {
         driver = new EdgeDriver();
@@ -19,10 +15,10 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    /*@AfterTest
+    @AfterTest
     public void tearDown(){
         driver.quit();
-    }*/
+    }
 }
 
 
