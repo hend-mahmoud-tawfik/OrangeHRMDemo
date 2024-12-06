@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Default Suite"  parallel="classes" thread-count="3" verbose="1">
     <test name="OrangeDemo">
+        <parameter name="input" value="testValue"/>
         <classes>
             <class name="LoginTests"/>
             <class name="AddUserTest"/>

@@ -1,6 +1,7 @@
 import io.qameta.allure.Description;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.DashboardPage;
 import pages.LoginPage;
@@ -34,4 +35,6 @@ public class NavigationTests extends BaseTest {
         boolean addUserTitleIsDisplayed = addUserTitle.isDisplayed();
         Assert.assertTrue(addUserTitleIsDisplayed);
     }
+
+
 }
