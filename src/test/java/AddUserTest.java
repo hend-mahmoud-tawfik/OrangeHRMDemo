@@ -13,6 +13,8 @@ public class AddUserTest extends BaseTest{
 
     String generatedUserName = newUserName + System.currentTimeMillis();
 
+    String editedUSer = "1234";
+
     @Test (description = "verify the successful adding user and confirm that the user is added successfully and displayed in the users list")
     @Description ("the successful adding for a new user")
     public void testAddUser(){
@@ -23,7 +25,7 @@ public class AddUserTest extends BaseTest{
         new ViewSystemUserPage(driver)
                 .clickOnAddBtn();
         new SaveSystemUserPage(driver)
-                .fillData(" James" , generatedUserName, "hmahmou1234@" )
+                .fillData(" Paul Amiano" , generatedUserName, "hmahmou1234@" )
                 .clickOnSaveBtn();
         Assert.assertTrue(ViewSystemUserPage.confirmAddedUserIsDisplayed(generatedUserName));
     }
@@ -38,8 +40,9 @@ public class AddUserTest extends BaseTest{
         new ViewSystemUserPage(driver)
                 .clickOnEditBtn();
         new SaveSystemUserPage(driver)
-                .editUserName(generatedUserName);
-        Assert.assertTrue(ViewSystemUserPage.confirmEditedUserIsDisplayed(generatedUserName));
+                .editUserName(editedUSer);
+        Assert.assertTrue(ViewSystemUserPage.confirmEditedUserIsDisplayed(editedUSer));
+
     }
 
 }

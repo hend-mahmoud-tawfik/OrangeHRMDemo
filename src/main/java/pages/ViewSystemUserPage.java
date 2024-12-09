@@ -77,18 +77,23 @@ public class ViewSystemUserPage {
     }
 
 
-    public static boolean confirmEditedUserIsDisplayed(String generatedUserName) {
+    public static boolean confirmEditedUserIsDisplayed(String editedUSer) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(userNameCells));
         List<WebElement> users = driver.findElements(userNameCells);
         for (int j = 0; j > users.size(); j++) {
             String user = users.get(j).getText();
-            if (user.equals(user + generatedUserName));
+            String newUser = user+editedUSer;
+            if (user.equals(newUser))
+                System.out.println(newUser);
           {
                 return true;
+
             }
         }
         return false;
+
     }
+
 }
 
 

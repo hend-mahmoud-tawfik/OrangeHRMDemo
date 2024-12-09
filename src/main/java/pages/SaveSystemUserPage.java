@@ -44,7 +44,7 @@ public class SaveSystemUserPage {
 
     private By requiredBtn = By.xpath("//span[text()='Required']");
 
-    private By nameSelected = By.xpath("//span[text()='James  Butler']");
+    private By nameSelected = By.xpath("//span[text()='Paul Lewis Amiano']");
 
     public static WebElement getAddUserTitle(WebDriver driver){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(addUserTitle));
@@ -76,11 +76,11 @@ public class SaveSystemUserPage {
          return wait.until(ExpectedConditions.visibilityOfElementLocated(editUserLabel));
     }
 
-   public ViewSystemUserPage editUserName(String generatedUserName){
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(userNameField));
-        driver.findElement(userNameField).clear();
+   public ViewSystemUserPage editUserName(String editedUSer){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(userNameField));
+       driver.findElement(userNameField).clear();
        WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(userNameField));
-        driver.findElement(userNameField).sendKeys(generatedUserName);
+        driver.findElement(userNameField).sendKeys(editedUSer);
         driver.findElement(saveBtn).click();
         return new ViewSystemUserPage(driver);
    }
