@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class ViewSystemUserPage {
 
@@ -77,24 +78,21 @@ public class ViewSystemUserPage {
     }
 
 
-    public static boolean confirmEditedUserIsDisplayed(String editedUSer) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(userNameCells));
-        List<WebElement> users = driver.findElements(userNameCells);
-        for (int j = 0; j > users.size(); j++) {
-            String user = users.get(j).getText();
-            String newUser = user+editedUSer;
-            if (user.equals(newUser))
-                System.out.println(newUser);
-          {
-                return true;
+    public static boolean confirmEditedUserIsDisplayed(String editedUser) {
 
+            wait.until(ExpectedConditions.visibilityOfElementLocated(userNameCells));
+            List<WebElement> users = driver.findElements(userNameCells);
+            for (int j = 0; j < users.size(); j++) {
+                String user = users.get(j).getText();
+                if (user.equals(editedUser)) {
+                    return true;
+                }
             }
-        }
         return false;
+        }
 
     }
 
-}
 
 
 

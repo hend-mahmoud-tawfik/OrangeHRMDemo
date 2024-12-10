@@ -1,9 +1,7 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -21,9 +19,9 @@ public class SaveSystemUserPage {
     }
 
     private static By addUserTitle = By.xpath("//h6[@class='oxd-text oxd-text--h6 orangehrm-main-title']");
-    private  By userRoleDropMenu = By.xpath("//label[contains(., 'User Role')]//following::div[1]//div[@class='oxd-select-text-input']\n");
+    private By userRoleDropMenu = By.xpath("//label[contains(., 'User Role')]//following::div[1]//div[@class='oxd-select-text-input']\n");
 
-    private  By statusDropMenu = By.xpath("//label[contains(., 'Status')]//following::div[1]//div[@class='oxd-select-text-input']");
+    private By statusDropMenu = By.xpath("//label[contains(., 'Status')]//following::div[1]//div[@class='oxd-select-text-input']");
 
     private By enabeledOpion = By.xpath("//span[text()='Enabled']");
     private By saveBtn = By.cssSelector("button[type=submit]");
@@ -46,11 +44,16 @@ public class SaveSystemUserPage {
 
     private By nameSelected = By.xpath("//span[text()='Paul Lewis Amiano']");
 
-    public static WebElement getAddUserTitle(WebDriver driver){
+    protected Actions actions;
+
+    protected JavascriptExecutor js;
+
+    public static WebElement getAddUserTitle(WebDriver driver) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(addUserTitle));
     }
 
-    public SaveSystemUserPage fillData(String employeeName , String userName , String password ) {
+
+    public SaveSystemUserPage fillData(String employeeName, String userName, String password) {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(pwText));
         driver.findElement(userRoleDropMenu).click();
         WebElement element1 = wait.until(ExpectedConditions.visibilityOfElementLocated(essOption));
@@ -66,23 +69,42 @@ public class SaveSystemUserPage {
         return this;
     }
 
-    public ViewSystemUserPage clickOnSaveBtn(){
+    public ViewSystemUserPage clickOnSaveBtn() {
         wait.until(ExpectedConditions.elementToBeClickable(saveBtn));
         driver.findElement(saveBtn).click();
         return new ViewSystemUserPage(driver);
     }
 
-    public static WebElement getEditUserLabel(WebDriver driver){
-         return wait.until(ExpectedConditions.visibilityOfElementLocated(editUserLabel));
+    public static WebElement getEditUserLabel(WebDriver driver) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(editUserLabel));
     }
 
-   public ViewSystemUserPage editUserName(String editedUSer){
+
+    public void clearUserName() {
+        driver.findElement(userNameField).clear();
+    }
+
+
+    public void clearText(String editedUser) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(userNameField));
-       driver.findElement(userNameField).clear();
-       WebElement element1 = wait.until(ExpectedConditions.elementToBeClickable(userNameField));
-        driver.findElement(userNameField).sendKeys(editedUSer);
+        actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.xpath("//label[contains(., 'Username')]//following::div[1]//input[@class='oxd-input oxd-input--active']")
+        )).doubleClick().click().sendKeys(Keys.BACK_SPACE).perform();
+        driver.findElement(saveBtn).click();
+
+    }
+
+    public void setUserName(String editedUser) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(userNameField));
+        driver.findElement(userNameField).sendKeys(editedUser);
+    }
+
+    public ViewSystemUserPage editUserName(String editedUser) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(userNameField));
+        clearText(editedUser);
+        setUserName(editedUser);
         driver.findElement(saveBtn).click();
         return new ViewSystemUserPage(driver);
-   }
     }
+}
 

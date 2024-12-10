@@ -13,7 +13,7 @@ public class AddUserTest extends BaseTest{
 
     String generatedUserName = newUserName + System.currentTimeMillis();
 
-    String editedUSer = "1234";
+    String editedUser = "admin1234";
 
     @Test (description = "verify the successful adding user and confirm that the user is added successfully and displayed in the users list")
     @Description ("the successful adding for a new user")
@@ -40,8 +40,8 @@ public class AddUserTest extends BaseTest{
         new ViewSystemUserPage(driver)
                 .clickOnEditBtn();
         new SaveSystemUserPage(driver)
-                .editUserName(editedUSer);
-        Assert.assertTrue(ViewSystemUserPage.confirmEditedUserIsDisplayed(editedUSer));
+                .editUserName(editedUser);
+        Assert.assertTrue(ViewSystemUserPage.confirmEditedUserIsDisplayed(editedUser) , "Not Displayed");
 
     }
 
